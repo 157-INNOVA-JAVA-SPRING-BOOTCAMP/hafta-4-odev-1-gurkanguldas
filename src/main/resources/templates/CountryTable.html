@@ -1,0 +1,114 @@
+<!doctype html>
+<html th:lang="${#locale.language}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Country Register</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" th:href="@{/css/TableStyle.css}">
+    <link rel="stylesheet" th:href="@{/css/RegisterStyle.css}">
+</head>
+<body>
+<!--start codes-->
+<div class="user2">
+    <header class="user__header">
+        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3219/logo.svg" alt=""/>
+        <h1 class="user__title">Table Of Cities</h1>
+    </header>
+    <div id="table-wrapper">
+        <div id="table-header-wrapper">
+            <table style="width:100%">
+                <tr>
+                    <select style="width: 10%;" class="btn2" onchange="location = this.value;">
+                        <option value="" selected>Sort By Country Id</option>
+                        <option value="/country/findall/countryId?descending=false">Escending Country Id</option>
+                        <option value="/country/findall/countryId?descending=true">Descending Country Id</option>
+                    </select>
+
+                    <select style="width: 15%;" class="btn2" onchange="location = this.value;">
+                        <option value="" selected>Sort By Country Name</option>
+                        <option value="/country/findall/countryName?descending=false">Escending Country Name</option>
+                        <option value="/country/findall/countryName?descending=true">Descending Country Name</option>
+                    </select>
+
+                    <select style="width: 15%;" class="btn2" onchange="location = this.value;">
+                        <option value="" selected>Sort By Country Continent</option>
+                        <option value="/country/findall/countryContinent?descending=false">Escending Country Continent</option>
+                        <option value="/country/findall/countryContinent?descending=true">Descending Country Continent</option>
+                    </select>
+
+                    <select style="width: 15%;" class="btn2" onchange="location = this.value;">
+                        <option value="" selected>Sort By Country Population</option>
+                        <option value="/country/findall/countryPopulation?descending=false">Escending Country Population</option>
+                        <option value="/country/findall/countryPopulation?descending=true">Descending Country Population</option>
+                    </select>
+
+                    <select style="width: 15%;" class="btn2" onchange="location = this.value;">
+                        <option value="" selected>Sort By Country Area</option>
+                        <option value="/country/findall/countryArea?descending=false">Escending Country Area</option>
+                        <option value="/country/findall/countryArea?descending=true">Descending Country Area</option>
+                    </select>
+
+                    <select style="width: 15%;" class="btn2" onchange="location = this.value;">
+                        <option value="" selected>Sort By Country Neighbors</option>
+                        <option value="/country/findall/countryNeighbors?descending=false">Escending Country Neighbors</option>
+                        <option value="/country/findall/countryNeighbors?descending=true">Descending Country Neighbors</option>
+                    </select>
+
+                    <select style="width: 15%;" class="btn2" onchange="location = this.value;">
+                        <option value="" selected>Sort By Country Founding Year</option>
+                        <option value="/country/findall/countryFoundingYear?descending=false">Escending Country Founding Year</option>
+                        <option value="/country/findall/countryFoundingYear?descending=true">Descending Country Founding Year</option>
+                    </select>
+                </tr>
+                <tr>
+                    <th style="width: 10%;" th:text="#{countryId}"></th>
+                    <th style="width: 15%;" th:text="#{countryName}"></th>
+                    <th style="width: 15%;" th:text="#{countryContinent}"></th>
+                    <th style="width: 15%;" th:text="#{countryPopulation}"></th>
+                    <th style="width: 15%;" th:text="#{countryArea}"></th>
+                    <th style="width: 15%;" th:text="#{countryNeighbors}"></th>
+                    <th style="width: 15%;" th:text="#{countryFoundingYear}"></th>
+                </tr>
+            </table>
+        </div>
+        <div id="table-scroll">
+            <table style="width:100%">
+                <tr th:each="CountryEntity : ${country_table}">
+                    <td style="width: 10%;" th:text="*{CountryEntity.getCountryId()}"></td>
+                    <td style="width: 15%;" th:text="*{CountryEntity.getCountryName()}"></td>
+                    <td style="width: 15%;" th:text="*{CountryEntity.getCountryContinent()}"></td>
+                    <td style="width: 15%;" th:text="*{CountryEntity.getCountryPopulation()}"></td>
+                    <td style="width: 15%;" th:text="*{CountryEntity.getCountryArea()}"></td>
+                    <td style="width: 15%;" th:text="*{CountryEntity.getCountryNeighbors()}"></td>
+                    <td style="width: 15%;" th:text="*{CountryEntity.getCountryFoundingYear()}"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="user">
+    <header class="user__header">
+        <h1 class="user__title">Operations Related To Country ID</h1>
+    </header>
+    <form class="form" th:action="@{/country/delete}">
+        <div class="form__group">
+            <input th:name="countryid" type="number" class="form__input" th:placeholder="#{countryId}" autofocus>
+        </div>
+        <button class="btn" style="width: 100%;" type="submit">Delete</button>
+        <table style="width:100%">
+            <tr>
+                <button class="btn" style="width: 33%;" type="submit" th:formaction="@{/country/register}">Register</button>
+                <button class="btn" style="width: 34%;" type="submit" th:formaction="@{/country/city}">Cities</button>
+                <button class="btn" style="width: 33%;" type="submit" th:formaction="@{/country/rest/listcountry}">Create JSON</button>
+            </tr>
+        </table>
+    </form>
+</div>
+<!--end codes-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

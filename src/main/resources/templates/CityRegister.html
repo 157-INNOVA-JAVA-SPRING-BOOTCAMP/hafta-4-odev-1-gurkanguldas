@@ -1,0 +1,59 @@
+<!doctype html>
+<html th:lang="${#locale.language}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Country Register</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" th:href="@{/css/RegisterStyle.css}">
+</head>
+<body>
+<!--start codes-->
+<div class="user">
+    <header class="user__header">
+        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3219/logo.svg" alt=""/>
+        <h1 class="user__title">Save City In Database</h1>
+    </header>
+
+    <form th:method="post" th:action="@{/country/city/register}" th:object="${key_form}" class="form">
+
+        <div class="form__group">
+            <input th:field="*{cityId}" type="text" class="form__input" th:placeholder="#{cityId}" autofocus>
+            <div th:if="${#fields.hasErrors('cityId')}" th:errors="*{cityId}"></div>
+        </div>
+
+        <div class="form__group">
+            <input th:field="*{cityName}" type="text" class="form__input" th:placeholder="#{cityName}">
+            <div th:if="${#fields.hasErrors('cityName')}" th:errors="*{cityName}"></div>
+        </div>
+
+        <div class="form__group">
+            <input th:field="*{cityPopulation}" type="text" class="form__input" th:placeholder="#{cityPopulation}">
+            <div th:if="${#fields.hasErrors('cityPopulation')}" th:errors="*{cityPopulation}"></div>
+        </div>
+
+        <div class="form__group">
+            <input th:field="*{cityAreaCode}" type="text" class="form__input" th:placeholder="#{cityAreaCode}">
+            <div th:if="${#fields.hasErrors('cityAreaCode')}" th:errors="*{cityAreaCode}"></div>
+        </div>
+
+        <div class="form__group">
+            <input th:field="*{cityArea}" type="text" class="form__input" th:placeholder="#{cityArea}">
+            <div th:if="${#fields.hasErrors('cityArea')}" th:errors="*{cityArea}"></div>
+        </div>
+
+        <input class="btn" style="width:100%" type="submit" value="Register">
+
+    </form>
+
+    <form th:action="@{/country/findall}">
+        <input class="btn" style="width:100%" type="submit" value="Countries">
+    </form>
+</div>
+<!--end codes-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

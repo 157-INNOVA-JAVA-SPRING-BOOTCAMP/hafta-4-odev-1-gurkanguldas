@@ -1,0 +1,39 @@
+td {
+    width: 33%;
+    padding: 15px;
+    background: linear-gradient(to bottom right, #c2c7e5 , #a2c7e5);
+}
+th{
+    width: 33%;
+    padding: 15px;
+    background: linear-gradient(to bottom right, #bbc0e5 , #a2b0e5);
+}
+#table-wrapper {
+    position:relative;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 40px;
+}
+#table-header-wrapper{
+    overflow-y:scroll;
+    overflow-x: hidden;
+}
+#table-scroll {
+    height:500px;
+    overflow-y:scroll;
+    overflow-x: hidden;
+}
+.user2 {
+     width: 70%;
+     margin: 3vh auto;
+ }
+.btn2 {
+    padding: 5px;
+    font-family: "Roboto";
+    -webkit-appearance: none;
+    color: white;
+    background: linear-gradient(to bottom right, #cccccc , #ccaaaa);
+    transition: 0.3s;
+}

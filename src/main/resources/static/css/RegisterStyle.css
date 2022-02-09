@@ -15,12 +15,12 @@ body {
 .user {
     width: 90%;
     max-width: 640px;
-    margin: 10vh auto;
+    margin: 3vh auto;
 }
-.user__header {
+.user__header,.user2__header {
     text-align: center;
 }
-.user__title {
+.user__title,.user2__title {
     font-size: 14px;
     margin-bottom: -10px;
     font-weight: 500;
@@ -50,18 +50,14 @@ body {
     background: #f7f7f7;
 }
 .btn {
-    display: block;
-    width: 100%;
     padding: 20px;
     font-family: "Roboto";
     -webkit-appearance: none;
-    outline: 0;
-    border: 0;
     color: white;
     background: #aba194;
     transition: 0.3s;
 }
-.btn:hover {
+.btn:hover,.btn2:hover {
     background: #a09486;
 }
 @keyframes NO {

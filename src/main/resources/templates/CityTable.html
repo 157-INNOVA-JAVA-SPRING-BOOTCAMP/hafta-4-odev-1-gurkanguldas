@@ -1,0 +1,98 @@
+<!doctype html>
+<html th:lang="${#locale.language}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>City Table</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" th:href="@{/css/TableStyle.css}">
+    <link rel="stylesheet" th:href="@{/css/RegisterStyle.css}">
+</head>
+<body>
+<!--start codes-->
+<div class="user2">
+    <header class="user__header">
+        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3219/logo.svg" alt=""/>
+        <h1 class="user__title">Table Of Cities In The Country</h1>
+    </header>
+    <div id="table-wrapper">
+        <div id="table-header-wrapper">
+            <table style="width:100%">
+                <tr>
+                    <select style="width: 20%;" class="btn2" onchange="location = this.value;">
+                        <option value="" selected>Sort By City Id</option>
+                        <option value="/country/city/find/cityId?descending=false">Escending City Id</option>
+                        <option value="/country/city/find/cityId?descending=true">Descending City Id</option>
+                    </select>
+
+                    <select style="width: 20%;" class="btn2" onchange="location = this.value;">
+                        <option value="" selected>Sort By City Name</option>
+                        <option value="/country/city/find/cityName?descending=false">Escending City Name</option>
+                        <option value="/country/city/find/cityName?descending=true">Descending City Name</option>
+                    </select>
+
+                    <select style="width: 20%;" class="btn2" onchange="location = this.value;">
+                        <option value="" selected>Sort By City Population</option>
+                        <option value="/country/city/find/cityPopulation?descending=false">Escending City Population</option>
+                        <option value="/country/city/find/cityPopulation?descending=true">Descending City Population</option>
+                    </select>
+
+                    <select style="width: 20%;" class="btn2" onchange="location = this.value;">
+                        <option value="" selected>Sort By City Area</option>
+                        <option value="/country/city/find/cityAreaCode?descending=false">Escending City Area</option>
+                        <option value="/country/city/find/cityAreaCode?descending=true">Descending City Area</option>
+                    </select>
+
+                    <select style="width: 20%;" class="btn2" onchange="location = this.value;">
+                        <option value="" selected>Sort By City Area</option>
+                        <option value="/country/city/find/cityArea?descending=false">Escending City Area</option>
+                        <option value="/country/city/find/cityArea?descending=true">Descending City Area</option>
+                    </select>
+                </tr>
+                <tr>
+                    <th style="width: 20%;" th:text="#{cityId}"></th>
+                    <th style="width: 20%;" th:text="#{cityName}"></th>
+                    <th style="width: 20%;" th:text="#{cityPopulation}"></th>
+                    <th style="width: 20%;" th:text="#{cityAreaCode}"></th>
+                    <th style="width: 20%;" th:text="#{cityArea}"></th>
+                </tr>
+            </table>
+        </div>
+        <div id="table-scroll">
+            <table style="width:100%">
+                <tr th:each="CityEntity : ${city_table}">
+                    <td style="width: 20%;" th:text="*{CityEntity.getCityId()}"></td>
+                    <td style="width: 20%;" th:text="*{CityEntity.getCityName()}"></td>
+                    <td style="width: 20%;" th:text="*{CityEntity.getCityPopulation()}"></td>
+                    <td style="width: 20%;" th:text="*{CityEntity.getCityAreaCode()}"></td>
+                    <td style="width: 20%;" th:text="*{CityEntity.getCityArea()}"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="user">
+    <header class="user__header">
+        <h1 class="user__title">Operations Related To City ID</h1>
+    </header>
+    <form class="form" th:action="@{/country/city/delete}">
+        <div class="form__group">
+            <input th:name="cityid" type="number" class="form__input" th:placeholder="#{cityId}" autofocus>
+        </div>
+        <button class="btn" style="width: 100%;" type="submit">Delete</button>
+        <table style="width:100%">
+            <tr>
+                <button class="btn" style="width: 33%;" type="submit" th:formaction="@{/country/city/register}">Register</button>
+                <button class="btn" style="width: 34%;" type="submit" th:formaction="@{/country/findall}">Countries</button>
+                <button class="btn" style="width: 33%;" type="submit" th:formaction="@{/country/city/rest/listcity}">Create JSON</button>
+            </tr>
+        </table>
+    </form>
+</div>
+<!--end codes-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
